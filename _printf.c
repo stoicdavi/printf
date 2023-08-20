@@ -1,4 +1,5 @@
 #include "main.h"
+void _p_buffer(int *buf_ind, char buff);
 /**
   * _printf - function that produce output according to format
   * @format: the format to be specified
@@ -8,45 +9,42 @@
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int i = 0;
+	int b = 0, print_char = 0, print = 0;
+	char buff[BUFF_SIZE];
+	int wdth, size, p, b_index = 0, flags;
 
+	if (format == NULL)
+		return (-1);
 	va_start(ap, format);
-	while (format != '\0')
+	for (b = 0; format[b] != '\0'; b++)
 	{
-		if (*format == '%')
+		if (format[b] != '%')
 		{
-			format++;
-			if (*format == 'c')
+			buff[b_index++] = format[b];
+			if (b_index == BUFF_SIZE)
 			{
-				int character = va_arg(ap, int);
-
-				putchar(character);
-				i++;
+				_p_buffer(buff, &b_index);
+				print_char++;
 			}
-			else if (*format == 's')
+		}
+		else
+		{
+			_p_buffer(buff, &b_index);
+			wdth = get_width(format, &b, ap);
+			flags = get_flags(format, &b);
+			p = get_precision(format, &b, ap);
+			size = get_size(format, &b);
+			b++;
+			print = h_print(format, &b, ap, buff, flags, wdth, p, size);
+			if (print == -1)
 			{
-				char *st = va_arg(ap, char*);
-
-				while (*st)
-				{
-					putchar(*st);
-					st++;
-					i++;
-				}
+				va_end(ap);
+				return (-1);
 			}
-			else if (*format == '%')
-			{
-				putchar('%');
-				i++;
-			}
-			else
-			{
-				putchar(*format);
-				i++;
-			}
-			format++;
+			print_char += print;
 		}
 	}
+	_p_buffer(buff, &b_index);
 	va_end(ap);
-	return i;
+	return print_char;
 }
