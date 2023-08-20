@@ -8,7 +8,7 @@
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int i;
+	int i = 0;
 
 	va_start(ap, format);
 	while (*format)
@@ -48,5 +48,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(ap);
-	return (i);
+	return i;
 }
