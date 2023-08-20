@@ -40,8 +40,10 @@ int _printf(const char *format, ...)
 				i++;
 			}
 			else
+			{
 				putchar(*format);
 				i++;
+			}
 			format++;
 		}
 	}
