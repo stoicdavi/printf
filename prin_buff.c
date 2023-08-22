@@ -1,8 +1,8 @@
 #include "main.h"
 /**
- * print_buffer -funtion to print the contents of a buffer if it exist
- * @buffer: an Array of characters to be printed
- * @buff_ind: Index at which to add next buffer char, represents the length.
+ * print_buffer - Funtion to print the contents of a buffer if it present
+ * @buffer: Array of characters to be printed
+ * @buff_ind: Index at which to add next buffer character, shows length.
  */
 void print_buffer(char buffer[], int *buff_ind)
 {
