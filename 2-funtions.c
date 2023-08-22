@@ -40,7 +40,7 @@ int print_unsigned(va_list types, char buffer[],
  * @types: Argument list
  * @buffer: Buffer array to handle print
  * @flags: Calculates active flag and returns it
- * @width: Displey width of the output
+ * @width: Display width of the output
  * @precision: Precision specification
  * @size: Specifies the size
  * Return: Number of characters to be printed
@@ -100,7 +100,7 @@ int print_hexadecimal(va_list types, char buffer[],
  * @types: Argument list
  * @buffer: Buffer array to handle print
  * @flags: Calculates active flags
- * @width: Get width of the output
+ * @width: Display width of the output
  * @precision: Precision specification
  * @size: Specifies the size
  * Return: Number of chars printed out
