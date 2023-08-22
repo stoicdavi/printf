@@ -1,4 +1,5 @@
 #include "main.h"
+ int _printf(const char *format, ...);
 /**
  * _printf - function that produce output according to format
  * @format: the format to be specified
